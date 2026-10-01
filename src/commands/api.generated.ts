@@ -1763,6 +1763,11 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
       "name": "durationSeconds",
       "kind": "number",
       "required": false
+     },
+     {
+      "name": "reason",
+      "kind": "string",
+      "required": false
      }
     ]
    },

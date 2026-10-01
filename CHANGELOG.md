@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.0
+- `huudis api ops end-users-impersonate <id> --reason <text>`: the reason is recorded on the audit log and the `huudis.ops.impersonation_*` webhook events.
+- `huudis webhooks create --events …` can subscribe to every type in the catalog; all of them are now delivered.
+
 ## 0.7.0
 - A route read by id next to its list is named `get` + the list's name: `huudis api account get-webhook-subscriptions` (was `huudis api account webhook-subscriptions-2`), `huudis api iam get-groups` (was `huudis api iam groups-2`), `huudis api iam get-policies` (was `huudis api iam policies-2`), `huudis api iam get-roles` (was `huudis api iam roles-2`), `huudis api iam get-service-accounts` (was `huudis api iam service-accounts-2`), `huudis api ops get-end-users` (was `huudis api ops end-users-2`). Each old name still works, hidden from help.
 
