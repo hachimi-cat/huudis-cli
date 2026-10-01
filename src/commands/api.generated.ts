@@ -7,7 +7,7 @@ import { callRoute, failRoute } from '../lib/apigen-call.js';
 
 type Kind = 'string' | 'number' | 'boolean' | 'array' | 'json';
 interface Field { name: string; kind: Kind; required: boolean; choices?: string[] }
-interface Route { name: string; method: string; path: string; summary: string; pathParams: string[]; query: Field[]; body: Field[] | null }
+interface Route { name: string; aliases?: string[]; method: string; path: string; summary: string; pathParams: string[]; query: Field[]; body: Field[] | null }
 
 export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
  {
@@ -277,6 +277,20 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
     ]
    },
    {
+    "name": "get-webhook-subscriptions",
+    "method": "GET",
+    "path": "/api/v1/account/webhook-subscriptions/{id}",
+    "summary": "Get a webhook subscription",
+    "pathParams": [
+     "id"
+    ],
+    "query": [],
+    "body": null,
+    "aliases": [
+     "webhook-subscriptions-2"
+    ]
+   },
+   {
     "name": "linked-accounts",
     "method": "GET",
     "path": "/api/v1/account/linked-accounts",
@@ -523,17 +537,6 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
     "path": "/api/v1/account/webhook-subscriptions",
     "summary": "List webhook subscriptions",
     "pathParams": [],
-    "query": [],
-    "body": null
-   },
-   {
-    "name": "webhook-subscriptions-2",
-    "method": "GET",
-    "path": "/api/v1/account/webhook-subscriptions/{id}",
-    "summary": "Get a webhook subscription",
-    "pathParams": [
-     "id"
-    ],
     "query": [],
     "body": null
    },
@@ -1259,22 +1262,67 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
     "body": null
    },
    {
-    "name": "groups",
-    "method": "GET",
-    "path": "/api/v1/iam/groups",
-    "summary": "List groups",
-    "pathParams": [],
-    "query": [],
-    "body": null
-   },
-   {
-    "name": "groups-2",
+    "name": "get-groups",
     "method": "GET",
     "path": "/api/v1/iam/groups/{id}",
     "summary": "Get a group",
     "pathParams": [
      "id"
     ],
+    "query": [],
+    "body": null,
+    "aliases": [
+     "groups-2"
+    ]
+   },
+   {
+    "name": "get-policies",
+    "method": "GET",
+    "path": "/api/v1/iam/policies/{id}",
+    "summary": "Get a policy",
+    "pathParams": [
+     "id"
+    ],
+    "query": [],
+    "body": null,
+    "aliases": [
+     "policies-2"
+    ]
+   },
+   {
+    "name": "get-roles",
+    "method": "GET",
+    "path": "/api/v1/iam/roles/{id}",
+    "summary": "Get a role",
+    "pathParams": [
+     "id"
+    ],
+    "query": [],
+    "body": null,
+    "aliases": [
+     "roles-2"
+    ]
+   },
+   {
+    "name": "get-service-accounts",
+    "method": "GET",
+    "path": "/api/v1/iam/service-accounts/{id}",
+    "summary": "Get a service account",
+    "pathParams": [
+     "id"
+    ],
+    "query": [],
+    "body": null,
+    "aliases": [
+     "service-accounts-2"
+    ]
+   },
+   {
+    "name": "groups",
+    "method": "GET",
+    "path": "/api/v1/iam/groups",
+    "summary": "List groups",
+    "pathParams": [],
     "query": [],
     "body": null
    },
@@ -1302,17 +1350,6 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
     "path": "/api/v1/iam/policies",
     "summary": "List policies",
     "pathParams": [],
-    "query": [],
-    "body": null
-   },
-   {
-    "name": "policies-2",
-    "method": "GET",
-    "path": "/api/v1/iam/policies/{id}",
-    "summary": "Get a policy",
-    "pathParams": [
-     "id"
-    ],
     "query": [],
     "body": null
    },
@@ -1357,33 +1394,11 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
     "body": null
    },
    {
-    "name": "roles-2",
-    "method": "GET",
-    "path": "/api/v1/iam/roles/{id}",
-    "summary": "Get a role",
-    "pathParams": [
-     "id"
-    ],
-    "query": [],
-    "body": null
-   },
-   {
     "name": "service-accounts",
     "method": "GET",
     "path": "/api/v1/iam/service-accounts",
     "summary": "List service accounts",
     "pathParams": [],
-    "query": [],
-    "body": null
-   },
-   {
-    "name": "service-accounts-2",
-    "method": "GET",
-    "path": "/api/v1/iam/service-accounts/{id}",
-    "summary": "Get a service account",
-    "pathParams": [
-     "id"
-    ],
     "query": [],
     "body": null
    },
@@ -1735,17 +1750,6 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
     "body": null
    },
    {
-    "name": "end-users-2",
-    "method": "GET",
-    "path": "/api/v1/ops/end-users/{id}",
-    "summary": "Get an end user",
-    "pathParams": [
-     "id"
-    ],
-    "query": [],
-    "body": null
-   },
-   {
     "name": "end-users-impersonate",
     "method": "POST",
     "path": "/api/v1/ops/end-users/{id}/impersonate",
@@ -1803,6 +1807,20 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
     ],
     "query": [],
     "body": null
+   },
+   {
+    "name": "get-end-users",
+    "method": "GET",
+    "path": "/api/v1/ops/end-users/{id}",
+    "summary": "Get an end user",
+    "pathParams": [
+     "id"
+    ],
+    "query": [],
+    "body": null,
+    "aliases": [
+     "end-users-2"
+    ]
    }
   ]
  }
@@ -1833,7 +1851,8 @@ export function buildApiCommand(): Command {
   for (const { area, routes } of API_ROUTES) {
     const group = new Command(area).description(`${area} routes`);
     for (const route of routes) {
-      const cmd = new Command(route.name).description(`${route.summary} (${route.method} ${route.path})`);
+      for (const name of [route.name, ...(route.aliases ?? [])]) {
+      const cmd = new Command(name).description(`${route.summary} (${route.method} ${route.path})`);
       for (const p of route.pathParams) cmd.argument(`<${p}>`);
       const fields = [...route.query, ...(route.body ?? [])];
       for (const f of fields) {
@@ -1867,7 +1886,8 @@ export function buildApiCommand(): Command {
           await failRoute(command, err);
         }
       });
-      group.addCommand(cmd);
+      group.addCommand(cmd, { hidden: name !== route.name });
+      }
     }
     api.addCommand(group);
   }

@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.7.0
+- A route read by id next to its list is named `get` + the list's name: `huudis api account get-webhook-subscriptions` (was `huudis api account webhook-subscriptions-2`), `huudis api iam get-groups` (was `huudis api iam groups-2`), `huudis api iam get-policies` (was `huudis api iam policies-2`), `huudis api iam get-roles` (was `huudis api iam roles-2`), `huudis api iam get-service-accounts` (was `huudis api iam service-accounts-2`), `huudis api ops get-end-users` (was `huudis api ops end-users-2`). Each old name still works, hidden from help.
+
 ## 0.6.0
 - Access keys: with `HUUDIS_ACCESS_KEY_ID` + `HUUDIS_SECRET_ACCESS_KEY` set, every call is signed `Huudis-HMAC-SHA256` with the key instead of using the stored sign-in (the key acts as its user within the user's IAM policies).
 - `huudis api app …` authenticates as your OIDC app with `HUUDIS_CLIENT_ID` + `HUUDIS_CLIENT_SECRET` (HTTP Basic); it used to send the sign-in bearer, which `/app/*` refuses.
