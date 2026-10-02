@@ -1276,6 +1276,17 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
     ]
    },
    {
+    "name": "get-key-requests",
+    "method": "GET",
+    "path": "/api/v1/iam/key-requests/{id}",
+    "summary": "Get a key request",
+    "pathParams": [
+     "id"
+    ],
+    "query": [],
+    "body": null
+   },
+   {
     "name": "get-policies",
     "method": "GET",
     "path": "/api/v1/iam/policies/{id}",
@@ -1341,6 +1352,102 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
     "path": "/api/v1/iam/invites",
     "summary": "List invites",
     "pathParams": [],
+    "query": [],
+    "body": null
+   },
+   {
+    "name": "key-actions",
+    "method": "GET",
+    "path": "/api/v1/iam/key-actions",
+    "summary": "List key actions",
+    "pathParams": [],
+    "query": [
+     {
+      "name": "limit",
+      "kind": "string",
+      "required": false
+     }
+    ],
+    "body": null
+   },
+   {
+    "name": "key-actions-undo",
+    "method": "POST",
+    "path": "/api/v1/iam/key-actions/{id}/undo",
+    "summary": "Undo a key action",
+    "pathParams": [
+     "id"
+    ],
+    "query": [],
+    "body": [
+     {
+      "name": "revokeKey",
+      "kind": "boolean",
+      "required": false
+     }
+    ]
+   },
+   {
+    "name": "key-requests",
+    "method": "GET",
+    "path": "/api/v1/iam/key-requests",
+    "summary": "List key requests",
+    "pathParams": [],
+    "query": [
+     {
+      "name": "limit",
+      "kind": "string",
+      "required": false
+     },
+     {
+      "name": "status",
+      "kind": "string",
+      "required": false
+     }
+    ],
+    "body": null
+   },
+   {
+    "name": "key-requests-approve",
+    "method": "POST",
+    "path": "/api/v1/iam/key-requests/{id}/approve",
+    "summary": "Approve a key request with the code from its challenge.",
+    "pathParams": [
+     "id"
+    ],
+    "query": [],
+    "body": [
+     {
+      "name": "challengeToken",
+      "kind": "string",
+      "required": true
+     },
+     {
+      "name": "code",
+      "kind": "string",
+      "required": true
+     }
+    ]
+   },
+   {
+    "name": "key-requests-challenge",
+    "method": "POST",
+    "path": "/api/v1/iam/key-requests/{id}/challenge",
+    "summary": "Start approving a key request: a second-factor challenge for the signed-in owner (an emailed code is sent when they have an email factor).",
+    "pathParams": [
+     "id"
+    ],
+    "query": [],
+    "body": null
+   },
+   {
+    "name": "key-requests-deny",
+    "method": "POST",
+    "path": "/api/v1/iam/key-requests/{id}/deny",
+    "summary": "Deny a key request",
+    "pathParams": [
+     "id"
+    ],
     "query": [],
     "body": null
    },
