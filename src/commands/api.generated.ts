@@ -1857,28 +1857,6 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
     "body": null
    },
    {
-    "name": "end-users-impersonate",
-    "method": "POST",
-    "path": "/api/v1/ops/end-users/{id}/impersonate",
-    "summary": "Impersonate an end user",
-    "pathParams": [
-     "id"
-    ],
-    "query": [],
-    "body": [
-     {
-      "name": "durationSeconds",
-      "kind": "number",
-      "required": false
-     },
-     {
-      "name": "reason",
-      "kind": "string",
-      "required": false
-     }
-    ]
-   },
-   {
     "name": "end-users-revoke",
     "method": "POST",
     "path": "/api/v1/ops/end-users/{id}/revoke",
@@ -1906,17 +1884,6 @@ export const API_ROUTES: Array<{ area: string; routes: Route[] }> = [
     "path": "/api/v1/ops/end-users/stop-impersonation",
     "summary": "Create a stop impersonation",
     "pathParams": [],
-    "query": [],
-    "body": null
-   },
-   {
-    "name": "end-users-verify-email",
-    "method": "POST",
-    "path": "/api/v1/ops/end-users/{id}/verify-email",
-    "summary": "Verify email an end user",
-    "pathParams": [
-     "id"
-    ],
     "query": [],
     "body": null
    },
